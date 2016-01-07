@@ -10,6 +10,7 @@ var UserSchema = new mongoose.Schema({
   picture: String,
   phoneNumber: String,
   IsDriver: Boolean,
+  Gender: String,
   PassengerRoutes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PassengerRoutes' }],
   DriverRoutes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'DriverRoutes' }]
 });

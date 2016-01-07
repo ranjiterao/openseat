@@ -5,7 +5,6 @@ var findAll = Q.nbind(User.find, User);
 var findUser = Q.nbind(User.findOne, User);
 var createUser = Q.nbind(User.create, User);
 
-
 module.exports = {
   getUsers: function(req, res, next){
     findAll()
@@ -15,6 +14,14 @@ module.exports = {
       .fail(function(error){
         next(error);
       });
+  },
+
+  findByFacebookId: function(id){
+    return findUser({facebookId: id});
+  },
+
+  create: function(user){
+    return createUser(user);
   },
 
   insertTestData: function(req, res, next){
