@@ -69,7 +69,9 @@ module.exports = {
           fromHour: driverRoute.fromHour,
           fromMinutes: driverRoute.fromMinutes,
           toHour: driverRoute.toHour,
-          toMinutes: driverRoute.toMinutes
+          toMinutes: driverRoute.toMinutes,
+          seats: driverRoute.seats,
+          fee: driverRoute.fee
         })
         .then(function(newRoute){
           user.DriverRoutes.push(newRoute);
