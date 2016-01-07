@@ -7,8 +7,10 @@ var DriverRoutesSchema = new mongoose.Schema({
     type: Boolean,
     default: [false, false, false, false, false, false, false]
   }],
-  hour: {min: 0, max: 24, type: Number},
-  minutes: {min: 0, max: 60, type: Number},
+  fromHour: {min: 0, max: 24, type: Number},
+  fromMinutes: {min: 0, max: 60, type: Number},
+  toHour: {min: 0, max: 24, type: Number},
+  toMinutes: {min: 0, max: 60, type: Number},
   seats: Number,
   fee: Number,
   prospectivePassengers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
