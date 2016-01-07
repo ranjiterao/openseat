@@ -6,6 +6,10 @@ h1 {
 	padding: 20px;
 }
 
+.logo {
+	background: #99F;
+}
+
 .menuBar {
 	height: 37px;
 	width: 100%;

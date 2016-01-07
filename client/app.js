@@ -5,13 +5,15 @@ var openSeatApp = angular.module('openSeatApp', ['ngRoute'])
       when('/createRoute', {
         templateUrl: './components/routeSetup/routeSetupView.html',
 
+      }).
+      when('/about', {
+        templateUrl: './components/about/aboutView.html',
+      }).
+      when('/login', {
+        templateUrl: './components/login/loginView.html',
+      }).
+      otherwise({
+        redirectTo: '/home'
       });
-      // when('/phones/:phoneId', {
-      //   templateUrl: 'partials/phone-detail.html',
-      //   controller: 'PhoneDetailCtrl'
-      // }).
-      // otherwise({
-      //   redirectTo: '/phones'
-      // });
     }
   ]);
