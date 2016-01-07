@@ -28,7 +28,8 @@
     "passport": "^0.3.2",
     "q": "^1.4.1",
     "sinon": "^1.17.2",
-    "spherical": "^0.1.0"
+    "spherical": "^0.1.0",
+    "passport-facebook": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.8.1"
