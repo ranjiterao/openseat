@@ -11,12 +11,37 @@
 .confirmed {
 	background-color: #BFB;
 }
+.confirmed:hover {
+	background-color: #AEA;
+}
 .notConfirmed {
-
 	background-color: #FBB;
+}
+.notConfirmed:hover {
+	background-color: #EAA;
 }
 
 .routeRender {
+	padding: 10px;
 	width: 90%;
 	margin: 10px 0px;
+}
+.driverInfo {
+	margin-top: 10px;
+	padding: 10px;
+	border: 2px solid #9D9;
+	height: 50px;
+
+}
+.driverInfo p {
+	font-size: 17pt;
+	float: left;
+	display: inline-block;
+	padding: 0 10px;
+	line-height: 50px;
+}
+.driverInfo img  {
+	float: right;
+	height: 50px;
+	width: auto;
 }
