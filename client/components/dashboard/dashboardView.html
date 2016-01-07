@@ -8,12 +8,16 @@
 	<div>
 		<ul ng-repeat = 'route in routes'>
 			<li>
-			<div ng-class = "route.confirmedDriverRoute ? 'confirmed' : 'notConfirmed'">
+			<div class = 'routeRender' ng-class = "route.confirmedDriverRoute ? 'confirmed' : 'notConfirmed'">
+
 				<h3>{{route.start}}</h3>
 				<h3>{{route.end}}</h3>
 				<p>{{route.days}}</p>
+				<div class = 'driverInfo'>
+					<p>{{route.driver.name}}</p>
+					<p>{{route.driver.phoneNumber}}</p>
+				</div>
 
-		
 			</div>
 			</li>
 		</ul>

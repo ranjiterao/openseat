@@ -1,10 +1,22 @@
 .dashboardView {
+	position: relative;
+	margin: auto;
+	width: 60%;
+}
+
+.dashboardView ul {
+	list-style-type: none;
 }
 
 .confirmed {
-	background-color: green;
+	background-color: #BFB;
 }
 .notConfirmed {
 
-	background-color: red;
+	background-color: #FBB;
+}
+
+.routeRender {
+	width: 90%;
+	margin: 10px 0px;
 }
