@@ -2,14 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="./assets/css/mainView.css">
-	<script src = './lib/angular/angular.js'></script>
-	<script src = './lib/angular-route/angular-route.js'></script>
-	<script src = './app.js'></script>
-	<script src = './services/appServices.js'></script>
-	<script src = './components/driverDashboard/driverDashboardController.js'></script>
-	<script src = './components/passengerDashboard/passengerDashboardController.js'></script>
-	<script src = './components/routeSetup/routeSetupController.js'></script>
-	<script src = './components/selectDriver/selectDriverController.js'></script>
+	<link rel="stylesheet" href="./assets/css/dashboardView.css">
 
   <title>OpenSeat</title>
 </head>
@@ -26,5 +19,15 @@
   	</ul>
 	</div>
 	<div ng-view></div>
+
+
+	<script src = './lib/angular/angular.js'></script>
+	<script src = './lib/angular-route/angular-route.js'></script>
+	<script src = './services/appServices.js'></script>
+	<script src = './app.js'></script>
+	<script src = './components/dashboard/dashboardController.js'></script>
+	<script src = './components/routeSetup/routeSetupController.js'></script>
+	<script src = './components/selectDriver/selectDriverController.js'></script>
+
 </body>
 </html>

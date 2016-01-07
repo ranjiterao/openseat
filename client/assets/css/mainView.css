@@ -1,13 +1,18 @@
 * {
 	margin: 0px;
 	padding: 0px;
+
 }
 h1 {
 	padding: 20px;
 }
 
 .logo {
-	background: #99F;
+	background: #DDD;
+}
+
+.logo h1 {
+	font-family: sans-serif;
 }
 
 .menuBar {
