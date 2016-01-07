@@ -11,7 +11,6 @@ module.exports = function(firstRoute, secondRoute, firstTime, secondTime) {
   var destDist = spherical.distance(firstRoute[1], secondRoute[1]);
   var beginDist = Math.max(firstTime[0] - secondTime[0], secondTime[0] - firstTime[0]);
   var endDist = Math.max(firstTime[1] - secondTime[1], secondTime[1] - firstTime[1]);
-  console.log(false);
 
   //this is effectively an equivalence between distance and time.
   //1 min outside time window is worth scalar meters outside space window
