@@ -6,14 +6,21 @@
 		<p></p>
 	</div>
 	<div>
-		<ul ng-repeat = 'route in routes'>
+		<ul ng-repeat = 'route in routes track by $index'>
 			<li>
-			<div ng-class = "route.confirmedDriverRoute ? 'confirmed' : 'notConfirmed'">
-				<h3>{{route.start}}</h3>
-				<h3>{{route.end}}</h3>
-				<p>{{route.days}}</p>
+			<div class = 'routeRender' ng-class = "route.confirmedDriverRoute ? 'confirmed' : 'notConfirmed'">
 
-		
+
+				<h3>{{route.itinerary.from}}</h3>
+				<h3>{{route.itinerary.to}}</h3>
+				<h4>{{route.days}}</h4>
+				<h3 ng-hide = "route.confirmedDriverRoute">No drivers have accepted the ride yet. </h2>
+				<div ng-show = "route.confirmedDriverRoute"class = 'driverInfo'>
+					<p>{{route.confirmedDriver.name}}</p>
+					<p>{{route.confirmedDriver.phoneNumber}}</p>
+					<img ng-src={{route.confirmedDriver.photo}}>
+				</div>
+
 			</div>
 			</li>
 		</ul>

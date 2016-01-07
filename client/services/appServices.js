@@ -42,6 +42,11 @@ angular.module('openSeat.services', [])
 					toHour: 8,
 					toMinutes: 30,
 					confirmedDriverRoute: false,
+					confirmedDriver: {
+						name: null,
+						phoneNumber: null,
+						photo: null
+					}
 				}, {
 					start: 'San Francisco',
 					end: 'San Mateo',
@@ -51,8 +56,29 @@ angular.module('openSeat.services', [])
 					toHour: 19,
 					toMinutes: 30,
 					confirmedDriverRoute: true,
+					confirmedDriver: {
+						name: 'Neil Degrass-Tyson',
+						phoneNumber: '408-355-3333',
+						photo: './assets/photos/driver.jpg'
+					}
 				}]
 			};
+			// This formats the user information in a more presentable way,
+			// It either adds a message telling the user that their route hasn't
+			// been accepted by any drivers. Additionally, it joins the array of
+			// days into a string that can be rendered on the screen.
+			user.PassengerRoutes = user.PassengerRoutes.map(function(route) {
+				route.itinerary = {};
+				route.itinerary.from = 'From: ' + route.start;
+				route.itinerary.to = 'To: ' + route.end;
+				route.days = 'Days confirmed: ' + route.days.join(' ');
+				console.log(route.confirmedDriver.photo)
+				if (!route.confirmedDriverRoute) {
+					route.message = 'No driver has been confirmed';
+				}
+				return route;
+			});
+
 			$scope.username = user.name;
 			$scope.picture = user.picture;
 			$scope.routes = user.PassengerRoutes;
