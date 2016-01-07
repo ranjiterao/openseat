@@ -17,12 +17,12 @@ var initMap = function() {
   //we use built-in methods to listen for UI events
   google.maps.event.addListener(firstMap, 'click', function(event) {
     addMarker(event.latLng, firstMap);
-    coords.push(event.latLng);
+    coords.push([event.latLng.lat(), event.latLng.lng()]);
   });
 
   google.maps.event.addListener(secondMap, 'click', function(event) {
     addMarker(event.latLng, secondMap);
-    coords.push(event.latLng);
+    coords.push([event.latLng.lat(), event.latLng.lng()]);
   });
 
   var addMarker = function(location, map) {
