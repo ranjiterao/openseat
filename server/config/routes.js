@@ -21,7 +21,7 @@ module.exports = function (app, express) {
   });
 
   app.get('/api/auth/facebook',
-    passport.authenticate('facebook'),
+    passport.authenticate('facebook', { scope: ['public_profile'] }),
     function(req, res){});
 
   app.get('/api/auth/facebook/callback',
