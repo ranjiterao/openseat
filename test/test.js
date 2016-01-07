@@ -12,7 +12,6 @@ describe('Array', function() {
 
 describe('utility', function() {
   before(function() {
-    var firstCoords = 
     mockery.enable();
     mockery.registerAllowable('spherical');
   });
