@@ -9,13 +9,14 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-var FACEBOOK_APP_ID = "jhjkh";
-var FACEBOOK_APP_SECRET = "hkjhkj";
+var FACEBOOK_APP_ID = "--secret--";
+var FACEBOOK_APP_SECRET = "--secret--";
 
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://127.0.0.1:8000/api/auth/facebook/callback"
+    callbackURL: "http://127.0.0.1:8000/api/auth/facebook/callback",
+    enableProof: true
   },
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
