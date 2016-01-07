@@ -1,5 +1,5 @@
 angular.module('dashboardModule', [])
 
 	.controller('renderUserCtrl', function($scope, RenderUser){
-		RenderUser.test();
+		RenderUser.renderPassenger('placeholder' ,$scope);
 		});

@@ -1,1 +1,21 @@
 <h1>Dashboard View</h1>
+
+<div class = 'dashboardView'>
+	<div>
+		<h1>{{username}}</h1>
+		<p></p>
+	</div>
+	<div>
+		<ul ng-repeat = 'route in routes'>
+			<li>
+			<div ng-class = "route.confirmedDriverRoute ? 'confirmed' : 'notConfirmed'">
+				<h3>{{route.start}}</h3>
+				<h3>{{route.end}}</h3>
+				<p>{{route.days}}</p>
+
+		
+			</div>
+			</li>
+		</ul>
+	</div>
+</div>

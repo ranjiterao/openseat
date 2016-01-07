@@ -1,0 +1,10 @@
+.dashboardView {
+}
+
+.confirmed {
+	background-color: green;
+}
+.notConfirmed {
+
+	background-color: red;
+}
