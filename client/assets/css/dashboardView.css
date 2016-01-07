@@ -10,9 +10,7 @@
 
 .confirmed {
 	background-color: #BFB;
-}
-.confirmed:hover {
-	background-color: #AEA;
+
 }
 .notConfirmed {
 	background-color: #FBB;
@@ -45,3 +43,4 @@
 	height: 50px;
 	width: auto;
 }
+
