@@ -1,4 +1,5 @@
 var passport = require('passport');
+var constants = require('./../../constants');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var usersController = require('./../components/users/usersController');
 
@@ -10,13 +11,10 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-var FACEBOOK_APP_ID = "--secret--";
-var FACEBOOK_APP_SECRET = "--secret--";
-
 passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://127.0.0.1:8000/api/auth/facebook/callback",
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: constants.API_URL + "/api/auth/facebook/callback",
     enableProof: true,
     profileFields: ['id', 'name','picture.type(large)', 'emails', 'displayName', 'about', 'gender']
   },
