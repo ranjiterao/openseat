@@ -1,9 +1,10 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var constants = require('./../constants');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/openseat');
+mongoose.connect(constants.MONGOLAB_URI);
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
 
