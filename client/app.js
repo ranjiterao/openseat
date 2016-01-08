@@ -8,7 +8,6 @@ angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule'
           if (user !== '0') {
             $rootScope.user = user;
             deferred.resolve();
-            console.log($rootScope.user)
           } else {
             deferred.reject();
             $location.url('/login');

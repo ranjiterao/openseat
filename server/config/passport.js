@@ -10,8 +10,8 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-var FACEBOOK_APP_ID = "216260968711459";
-var FACEBOOK_APP_SECRET = "48f4bf845f8fc37abf9faceb51d894cd";
+var FACEBOOK_APP_ID = "--secret--";
+var FACEBOOK_APP_SECRET = "--secret--";
 
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
