@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var DriverRoutesSchema = new mongoose.Schema({
-  start: String,
-  end: String,
+  start: [Number],
+  end: [Number],
   days: [{
     type: Boolean,
     default: [false, false, false, false, false, false, false]
