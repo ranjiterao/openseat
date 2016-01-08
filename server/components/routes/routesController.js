@@ -58,10 +58,6 @@ module.exports = {
 
     findUser({ _id: userId })
       .then(function(user){
-        if(!user.IsDriver){
-          res.sendStatus(400);
-        }
-
         createDriverRoutes({
           start: driverRoute.start,
           end: driverRoute.end,
@@ -74,6 +70,7 @@ module.exports = {
           fee: driverRoute.fee
         })
         .then(function(newRoute){
+          user.IsDriver = true;
           user.DriverRoutes.push(newRoute);
           user.save();
           res.status(200).json(newRoute);
