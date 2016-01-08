@@ -1,8 +1,7 @@
 angular.module('dashboardModule', [])
 
-	.controller('renderUserCtrl', function($scope, RenderUser){
+	.controller('renderUserCtrl', function($scope, RenderUser, $rootScope){
 		RenderUser.renderPassenger('placeholder' ,$scope);
-		console.log($scope.routes[1].confirmedDriverRoute)
 		if($scope.routes[1].confirmedDriverRoute){
 			$scope.routes[1].driver = {};
 			$scope.routes[1].driver.name = 'Dave';
@@ -10,4 +9,5 @@ angular.module('dashboardModule', [])
 		} else {
 			$scope.routes[0].driver = '';
 		}
+		$scope.username = 'Hello ' + $rootScope.user.name;
 		});

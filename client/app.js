@@ -1,11 +1,11 @@
 angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule'])
   .config(['$routeProvider',
     function($routeProvider) {
-      var checkLoggedin = function($q, $http, $location, $rootScope){
+      var checkLoggedin = function($q, $http, $location, $rootScope) {
         var deferred = $q.defer();
 
-        $http.get('/api/loggedin').success(function(user){
-          if (user !== '0'){
+        $http.get('/api/loggedin').success(function(user) {
+          if (user !== '0') {
             $rootScope.user = user;
             deferred.resolve();
           } else {
@@ -14,6 +14,7 @@ angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule'
           }
         });
 
+
         return deferred.promise;
       };
 
@@ -21,11 +22,15 @@ angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule'
       when('/home', {
         templateUrl: './components/dashboard/dashboardView.html',
         controller: 'renderUserCtrl',
-        resolve: { loggedin: checkLoggedin }
+        resolve: {
+          loggedin: checkLoggedin
+        }
       }).
       when('/createRoute', {
         templateUrl: './components/routeSetup/routeSetupView.html',
-        resolve: { loggedin: checkLoggedin }
+        resolve: {
+          loggedin: checkLoggedin
+        }
       }).
       when('/about', {
         templateUrl: './components/about/aboutView.html',
