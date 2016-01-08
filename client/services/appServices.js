@@ -32,7 +32,6 @@ angular.module('openSeat.services', [])
 		};
 		userMethods.renderPassenger = function(user, $scope) {
 			user = {
-				name: 'John Doe',
 				PassengerRoutes: [{
 					start: 'San Mateo',
 					end: 'San Francisco',
@@ -72,14 +71,12 @@ angular.module('openSeat.services', [])
 				route.itinerary.from = 'From: ' + route.start;
 				route.itinerary.to = 'To: ' + route.end;
 				route.days = 'Days confirmed: ' + route.days.join(' ');
-				console.log(route.confirmedDriver.photo)
 				if (!route.confirmedDriverRoute) {
 					route.message = 'No driver has been confirmed';
 				}
 				return route;
 			});
 
-			$scope.username = user.name;
 			$scope.picture = user.picture;
 			$scope.routes = user.PassengerRoutes;
 		};
