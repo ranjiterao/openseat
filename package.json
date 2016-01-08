@@ -6,7 +6,10 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "node server/server.js",
+    "postinstall": "bower install"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/OpenSeatApp/openseat.git"
