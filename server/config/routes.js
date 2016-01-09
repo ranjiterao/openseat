@@ -1,6 +1,7 @@
 var usersController = require('./../components/users/usersController');
 var routesController = require('./../components/routes/routesController');
 var passport = require('./passport');
+var helpers = require('./helpers');
 
 module.exports = function (app, express) {
   app.get('/api/keepalive', function(req, res){
@@ -11,9 +12,8 @@ module.exports = function (app, express) {
   app.get('/api/users/:id', usersController.getUser);
   app.get('/api/inserTestData', usersController.insertTestData);
 
-  app.get('/api/userInterestedInDriverRoute', routesController.userInterestedInDriverRoute);
-  app.get('/api/driverConfirmsPassenger', routesController.driverConfirmsPassenger);
-
+  app.post('/api/userInterestedInDriverRoute', routesController.userInterestedInDriverRoute);
+  app.post('/api/driverConfirmsPassenger', routesController.driverConfirmsPassenger);
 
   app.post('/api/passengerRoute', routesController.insertPassengerRoute);
   app.get('/api/passengerRoute', routesController.getPassengerRoutes);
@@ -41,4 +41,7 @@ module.exports = function (app, express) {
     req.logout();
     res.redirect('/#/login');
   });
+
+  app.use(helpers.errorLogger);
+  app.use(helpers.errorHandler);
 };
