@@ -86,9 +86,8 @@ angular.module('openSeat.services', [])
 	.factory('PostRoute', function($http) {
 		var postRoute = {};
 
-		postRoute.newRoute = function(route, isDriver) {
-
-			if (isDriver) {
+		postRoute.newRoute = function(route) {
+			if (route.isDriver) {
 				$http.post('/api/driverRoute', route)
 					.then(function(result) {
 						console.log(result, 'driver');
