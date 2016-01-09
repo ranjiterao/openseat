@@ -1,4 +1,4 @@
-angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule'])
+angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule','routeSetupModule'])
   .config(['$routeProvider',
     function($routeProvider) {
       var checkLoggedin = function($q, $http, $location, $rootScope) {
@@ -28,6 +28,7 @@ angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule'
       }).
       when('/createRoute', {
         templateUrl: './components/routeSetup/routeSetupView.html',
+        controller: 'routeSetupCtrl',
         resolve: {
           loggedin: checkLoggedin
         }

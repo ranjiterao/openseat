@@ -105,7 +105,7 @@ module.exports = {
   },
 
   insertPassengerRoute: function(req, res, next){
-    var passengerRoute = req.body.passengerRoute;
+    var passengerRoute = req.body.route;
     var userId = req.body.userId;
 
     findUser({ _id: userId })
@@ -143,7 +143,7 @@ module.exports = {
   },
 
   insertDriverRoute: function(req, res, next){
-    var driverRoute = req.body.driverRoute;
+    var driverRoute = req.body.route;
     var userId = req.body.userId;
 
     findUser({ _id: userId })
