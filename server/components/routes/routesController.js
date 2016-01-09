@@ -19,6 +19,7 @@ var findUser = Q.nbind(User.findOne, User);
 module.exports = {
 
   userInterestedInDriverRoute: function(req, res, next){
+    console.log('im here000');
     var passengerRouteId = req.body.passengerRouteId;
     var driverRouteId = req.body.driverRouteId;
 
@@ -27,8 +28,13 @@ module.exports = {
 
         findPassengerRoutes({ _id: passengerRouteId })
           .then(function(passengerRoute){
-            passengerRoute.driverRoutesIAmInterestedIn.push(driverRoute);
-            driverRoute.prospectivePassengerRoutes(passengerRoute);
+
+            if (passengerRoute.driverRoutesIAmInterestedIn.indexOf(driverRouteId) === -1)
+              passengerRoute.driverRoutesIAmInterestedIn.push(driverRoute);
+
+            if (driverRoute.prospectivePassengerRoutes.indexOf(passengerRouteId) === -1)
+              driverRoute.prospectivePassengerRoutes.push(passengerRoute);
+
             passengerRoute.save();
             driverRoute.save();
             res.sendStatus(200);
@@ -80,6 +86,9 @@ module.exports = {
         DriverRoutes.find({})
           .populate('driverInformation')
           .exec(function(error, driverRoutes){
+            if (error){
+              return res.sendStatus(400);
+            }
             
             for(var i=0; i<driverRoutes.length; i++){
               var driverRoute = driverRoutes[i];
@@ -94,7 +103,6 @@ module.exports = {
                 passengerRoute.days, driverRoute.days);
 
               if (distance){
-                console.log(driverRoute.driverInformation.name);
                 results.push({ driverRoute: driverRoute, distance: distance, driver: driverRoute.driverInformation });
               }
             }

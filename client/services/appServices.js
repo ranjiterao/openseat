@@ -104,8 +104,17 @@ angular.module('openSeat.services', [])
 				});
 		};
 
+		var userInterestedInDriverRoute = function(passengerRouteId, driverRouteId){
+			return $http({
+				method: 'POST',
+				url: '/api/userInterestedInDriverRoute/',
+				data: { passengerRouteId: passengerRouteId, driverRouteId: driverRouteId }
+			});
+		};
+
 		return {
-			bestDriverRoutesForPassengerRouteId: bestDriverRoutesForPassengerRouteId
+			bestDriverRoutesForPassengerRouteId: bestDriverRoutesForPassengerRouteId,
+			userInterestedInDriverRoute: userInterestedInDriverRoute
 		};
 	})
 	;
