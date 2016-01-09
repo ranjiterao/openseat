@@ -8,7 +8,12 @@ module.exports = function (app, express) {
   });
 
   app.get('/api/users', usersController.getUsers);
+  app.get('/api/users/:id', usersController.getUser);
   app.get('/api/inserTestData', usersController.insertTestData);
+
+  app.get('/api/userInterestedInDriverRoute', routesController.userInterestedInDriverRoute);
+  app.get('/api/driverConfirmsPassenger', routesController.driverConfirmsPassenger);
+
 
   app.post('/api/passengerRoute', routesController.insertPassengerRoute);
   app.get('/api/passengerRoute', routesController.getPassengerRoutes);

@@ -6,14 +6,66 @@ var User = require('./../users/usersModel');
 var findAllPassengerRoutes = Q.nbind(PassengerRoutes.find, PassengerRoutes);
 var findPassengerRoutes = Q.nbind(PassengerRoutes.findOne, PassengerRoutes);
 var createPassengerRoutes = Q.nbind(PassengerRoutes.create, PassengerRoutes);
+var updatePassengerRoutes = Q.nbind(PassengerRoutes.update, PassengerRoutes);
 
 var findAllDriverRoutes = Q.nbind(DriverRoutes.find, DriverRoutes);
 var findDriverRoutes = Q.nbind(DriverRoutes.findOne, DriverRoutes);
 var createDriverRoutes = Q.nbind(DriverRoutes.create, DriverRoutes);
+var updateDriverRoutes = Q.nbind(DriverRoutes.update, DriverRoutes);
 
 var findUser = Q.nbind(User.findOne, User);
 
 module.exports = {
+
+  userInterestedInDriverRoute: function(req, res, next){
+    var passengerRouteId = req.body.passengerRouteId;
+    var driverRouteId = req.body.driverRouteId;
+
+    findDriverRoutes({ _id: driverRouteId })
+      .then(function(driverRoute){
+
+        findPassengerRoutes({ _id: passengerRouteId })
+          .then(function(passengerRoute){
+            passengerRoute.driverRoutesIAmInterestedIn.push(driverRoute);
+            driverRoute.prospectivePassengerRoutes(passengerRoute);
+            passengerRoute.save();
+            driverRoute.save();
+            res.sendStatus(200);
+          });
+
+      })
+      .fail(function(error) {
+        next(error);
+      });
+  },
+
+  driverConfirmsPassenger: function(req, res, next){
+    var passengerRouteId = req.body.passengerRouteId;
+    var driverRouteId = req.body.driverRouteId;
+
+    findDriverRoutes({ _id: driverRouteId })
+      .then(function(driverRoute){
+
+        findPassengerRoutes({ _id: passengerRouteId })
+          .then(function(passengerRoute){
+            driverRoute.confirmedPassengerRoutes.push(passengerRoute);
+            passengerRoute.confirmedDriverRoute = driverRoute;
+            passengerRoute.save();
+            driverRoute.save();
+
+            updatePassengerRoutes({ _id: passengerRouteId },
+              { $pull: { driverRoutesIAmInterestedIn: { _id: driverRouteId } } }
+            );
+
+            updateDriverRoutes({ _id: driverRouteId },
+              { $pull: { prospectivePassengerRoutes: { _id: passengerRouteId } } }
+            );
+
+            res.sendStatus(200);
+          });
+
+      });
+  },
 
   insertPassengerRoute: function(req, res, next){
     var passengerRoute = req.body.passengerRoute;

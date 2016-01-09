@@ -16,6 +16,17 @@ module.exports = {
       });
   },
 
+  getUser: function(req, res, next){
+    var userId = req.params.id;
+    findUser({ _id: userId })
+      .then(function(user){
+        res.status(200).json(user);
+      })
+      .fail(function(error){
+        next(error);
+      });
+  },
+
   findByFacebookId: function(id){
     return findUser({facebookId: id});
   },
