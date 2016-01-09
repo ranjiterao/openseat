@@ -1,7 +1,10 @@
 angular.module('routeSetupModule', [])
-	.controller('routeSetupCtrl', function(PostPassengerRoute, $scope, $rootScope){
+	.controller('routeSetupCtrl', function(PostRoute, $scope, $rootScope) {
+		initMap();
 
-		$scope.submitRoute = function(){
+
+		$scope.submitRoute = function() {
+			var isDriver = $('#isDriver').prop('checked');
 			var startX = $('#startX').val();
 			var startY = $('#startY').val();
 			var endX = $('#endX').val();
@@ -30,7 +33,7 @@ angular.module('routeSetupModule', [])
 			var data = {};
 			data.route = routeObj;
 			data.userId = $rootScope.user._id;
-			console.log(data);
-			PostPassengerRoute.newRoute(data);
+			PostRoute.newRoute(data, isDriver);
+
 		};
 	});
