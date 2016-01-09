@@ -82,11 +82,16 @@ module.exports = {
             
             for(var i=0; i<driverRoutes.length; i++){
               var driverRoute = driverRoutes[i];
+              if (driverRoute.confirmedPassengerRoutes.length >= driverRoute.seats){
+                continue;
+              }
+
               var distance = distanceCalculator([passengerRoute.start, passengerRoute.end],
                 [driverRoute.start, driverRoute.end],
                 [[passengerRoute.fromHour, passengerRoute.fromMinutes],[passengerRoute.toHour, passengerRoute.toMinutes]],
                 [[driverRoute.fromHour, driverRoute.fromMinutes],[driverRoute.toHour, driverRoute.toMinutes]],
                 passengerRoute.days, driverRoute.days);
+
               if (distance){
                 results.push({ driverRoute: driverRoute, distance: distance });
               }
