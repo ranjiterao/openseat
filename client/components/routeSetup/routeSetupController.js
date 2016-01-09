@@ -2,13 +2,8 @@ angular.module('routeSetupModule', [])
 	.controller('routeSetupCtrl', function(PostRoute, $scope, $rootScope) {
 		var geocoder = initMap();
 
-
-
 		$scope.submitRoute = function() {
-
-
-
-
+			
 			var monday = $('#monday').prop('checked');
 			var tuesday = $('#tuesday').prop('checked');
 			var wednesday = $('#wednesday').prop('checked');
