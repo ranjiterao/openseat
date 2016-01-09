@@ -9,5 +9,5 @@ angular.module('dashboardModule', [])
 		} else {
 			$scope.routes[0].driver = '';
 		}
-			$scope.username = 'Eric'; //'Hello ' + $rootScope.user.name;
+			$scope.username = 'Hello ' + $rootScope.user.name;
 		});
