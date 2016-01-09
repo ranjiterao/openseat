@@ -73,7 +73,7 @@ module.exports = {
 
   bestDriverRoutesForPassengerRouteId: function(req, res, next){
     var passengerRouteId = req.params.id;
-    var results = {};
+    var results = [];
 
     findPassengerRoutes({ _id: passengerRouteId })
       .then(function(passengerRoute){
@@ -88,9 +88,13 @@ module.exports = {
                 [[driverRoute.fromHour, driverRoute.fromMinutes],[driverRoute.toHour, driverRoute.toMinutes]],
                 passengerRoute.days, driverRoute.days);
               if (distance){
-                results[driverRoute._id] = { driverRoute: driverRoute, distance: distance };
+                results.push({ driverRoute: driverRoute, distance: distance });
               }
             }
+
+            results.sort(function(a, b) {
+              return a.distance - b.distance;
+            });
 
             res.status(200).json(results);
           });
