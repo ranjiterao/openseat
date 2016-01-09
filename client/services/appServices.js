@@ -82,4 +82,16 @@ angular.module('openSeat.services', [])
 		};
 
 		return userMethods;
+	})
+	.factory('PostPassengerRoute', function($http) {
+		var postRoute = {};
+
+		postRoute.newRoute = function(route) {
+
+			$http.post('/api/passengerRoute', route)
+				.then(function(result){
+					console.log(result);
+				});
+		};
+		return postRoute;
 	});
