@@ -8,6 +8,7 @@ module.exports = function (app, express) {
   });
 
   app.get('/api/users', usersController.getUsers);
+  app.get('/api/users/:id', usersController.getUser);
   app.get('/api/inserTestData', usersController.insertTestData);
 
   app.post('/api/passengerRoute', routesController.insertPassengerRoute);
