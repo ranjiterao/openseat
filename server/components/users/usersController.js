@@ -42,7 +42,7 @@ module.exports = {
       email: "test@test.com",
       picture: "http://images.apple.com/pr/bios/images/cook_thumb.jpg",
       phoneNumber: "4168906789",
-      IsDriver: false
+      IsDriver: true
     })
     .then(function(newUser){
     })
