@@ -21,6 +21,8 @@ module.exports = function (app, express) {
   app.post('/api/driverRoute', routesController.insertDriverRoute);
   app.get('/api/driverRoute', routesController.getDriverRoutes);
 
+  app.get('/api/bestDriverRoutesForPassengerRouteId/:id', routesController.bestDriverRoutesForPassengerRouteId);
+
   app.get('/api/loggedin', function(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
   });

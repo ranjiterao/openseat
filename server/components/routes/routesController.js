@@ -2,6 +2,7 @@ var Q = require('q');
 var PassengerRoutes = require('./passengerRoutesModel');
 var DriverRoutes = require('./driverRoutesModel');
 var User = require('./../users/usersModel');
+var distanceCalculator = require('../../../algorithm/utility');
 
 var findAllPassengerRoutes = Q.nbind(PassengerRoutes.find, PassengerRoutes);
 var findPassengerRoutes = Q.nbind(PassengerRoutes.findOne, PassengerRoutes);
@@ -64,6 +65,38 @@ module.exports = {
             res.sendStatus(200);
           });
 
+      })
+      .fail(function(error) {
+        next(error);
+      });
+  },
+
+  bestDriverRoutesForPassengerRouteId: function(req, res, next){
+    var passengerRouteId = req.params.id;
+    var results = {};
+
+    findPassengerRoutes({ _id: passengerRouteId })
+      .then(function(passengerRoute){
+        findAllDriverRoutes({})
+          .then(function(driverRoutes){
+            
+            for(var i=0; i<driverRoutes.length; i++){
+              var driverRoute = driverRoutes[i];
+              var distance = distanceCalculator([passengerRoute.start, passengerRoute.end],
+                [driverRoute.start, driverRoute.end],
+                [[passengerRoute.fromHour, passengerRoute.fromMinutes],[passengerRoute.toHour, passengerRoute.toMinutes]],
+                [[driverRoute.fromHour, driverRoute.fromMinutes],[driverRoute.toHour, driverRoute.toMinutes]],
+                passengerRoute.days, driverRoute.days);
+              if (distance){
+                results[driverRoute._id] = { driverRoute: driverRoute, distance: distance };
+              }
+            }
+
+            res.status(200).json(results);
+          });
+      })
+      .fail(function(error) {
+        next(error);
       });
   },
 
@@ -73,10 +106,6 @@ module.exports = {
 
     findUser({ _id: userId })
       .then(function(user){
-        if(user.IsDriver){
-          res.sendStatus(400);
-        }
-
         createPassengerRoutes({
           start: passengerRoute.start,
           end: passengerRoute.end,
@@ -88,10 +117,15 @@ module.exports = {
         })
         .then(function(newRoute){
           user.PassengerRoutes.push(newRoute);
+          user.IsDriver = false;
           user.save();
           res.status(200).json(newRoute);
         });
+      })
+      .fail(function(error) {
+        next(error);
       });
+
   },
 
   getPassengerRoutes: function(req, res, next) {
