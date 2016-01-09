@@ -77,8 +77,9 @@ module.exports = {
 
     findPassengerRoutes({ _id: passengerRouteId })
       .then(function(passengerRoute){
-        findAllDriverRoutes({})
-          .then(function(driverRoutes){
+        DriverRoutes.find({})
+          .populate('driverInformation')
+          .exec(function(error, driverRoutes){
             
             for(var i=0; i<driverRoutes.length; i++){
               var driverRoute = driverRoutes[i];
@@ -93,7 +94,8 @@ module.exports = {
                 passengerRoute.days, driverRoute.days);
 
               if (distance){
-                results.push({ driverRoute: driverRoute, distance: distance });
+                console.log(driverRoute.driverInformation.name);
+                results.push({ driverRoute: driverRoute, distance: distance, driver: driverRoute.driverInformation });
               }
             }
 
@@ -162,13 +164,18 @@ module.exports = {
           toHour: driverRoute.toHour,
           toMinutes: driverRoute.toMinutes,
           seats: driverRoute.seats,
-          fee: driverRoute.fee
+          fee: driverRoute.fee,
+          driverInformation: user
         })
         .then(function(newRoute){
           user.IsDriver = true;
           user.DriverRoutes.push(newRoute);
           user.save();
           res.status(200).json(newRoute);
+        })
+        .fail(function(error) {
+          console.log(error);
+          next(error);
         });
       });
   },

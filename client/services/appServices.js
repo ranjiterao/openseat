@@ -94,4 +94,18 @@ angular.module('openSeat.services', [])
 				});
 		};
 		return postRoute;
-	});
+	})
+	.factory('Routes', function($http){
+
+		var bestDriverRoutesForPassengerRouteId = function(passengerRouteId, callback){
+			$http.get('/api/bestDriverRoutesForPassengerRouteId/' + passengerRouteId)
+				.then(function(driverRoutes){
+					callback(driverRoutes.data);
+				});
+		};
+
+		return {
+			bestDriverRoutesForPassengerRouteId: bestDriverRoutesForPassengerRouteId
+		};
+	})
+	;

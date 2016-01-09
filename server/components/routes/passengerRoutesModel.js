@@ -11,8 +11,8 @@ var PassengerRoutesSchema = new mongoose.Schema({
   fromMinutes: {min: 0, max: 60, type: Number},
   toHour: {min: 0, max: 24, type: Number},
   toMinutes: {min: 0, max: 60, type: Number},
-  driverRoutesIAmInterestedIn: [{ type: mongoose.Schema.Types.ObjectId, ref: 'DriverRoutes' }],
-  confirmedDriverRoute: {type: mongoose.Schema.Types.ObjectId, ref: 'DriverRoutes'}
+  driverRoutesIAmInterestedIn: [{ type: mongoose.Schema.Types.ObjectId, ref: 'driverroutes' }],
+  confirmedDriverRoute: {type: mongoose.Schema.Types.ObjectId, ref: 'driverroutes'}
 });
 
 module.exports = mongoose.model('passengerRoutes', PassengerRoutesSchema);
