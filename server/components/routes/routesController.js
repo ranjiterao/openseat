@@ -19,7 +19,6 @@ var findUser = Q.nbind(User.findOne, User);
 module.exports = {
 
   userInterestedInDriverRoute: function(req, res, next){
-    console.log('im here000');
     var passengerRouteId = req.body.passengerRouteId;
     var driverRouteId = req.body.driverRouteId;
 
