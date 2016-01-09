@@ -22,15 +22,15 @@ angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule'
       when('/home', {
         templateUrl: './components/dashboard/dashboardView.html',
         controller: 'renderUserCtrl',
-        resolve: {
-          loggedin: checkLoggedin
-        }
+        // resolve: {
+        //   loggedin: checkLoggedin
+        // }
       }).
       when('/createRoute', {
         templateUrl: './components/routeSetup/routeSetupView.html',
-        resolve: {
-          loggedin: checkLoggedin
-        }
+        // resolve: {
+        //   loggedin: checkLoggedin
+        // }
       }).
       when('/about', {
         templateUrl: './components/about/aboutView.html',
