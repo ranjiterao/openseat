@@ -83,15 +83,21 @@ angular.module('openSeat.services', [])
 
 		return userMethods;
 	})
-	.factory('PostPassengerRoute', function($http) {
+	.factory('PostRoute', function($http) {
 		var postRoute = {};
 
 		postRoute.newRoute = function(route) {
-
-			$http.post('/api/passengerRoute', route)
-				.then(function(result){
-					console.log(result);
-				});
+			if (route.isDriver) {
+				$http.post('/api/driverRoute', route)
+					.then(function(result) {
+						console.log(result, 'driver');
+					});
+			} else {
+				$http.post('/api/passengerRoute', route)
+					.then(function(result) {
+						console.log(result, 'passenger');
+					});
+			}
 		};
 		return postRoute;
 	})

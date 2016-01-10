@@ -1,11 +1,9 @@
 angular.module('routeSetupModule', [])
-	.controller('routeSetupCtrl', function(PostPassengerRoute, $scope, $rootScope){
+	.controller('routeSetupCtrl', function(PostRoute, $scope, $rootScope) {
+		var geocoder = initMap();
 
-		$scope.submitRoute = function(){
-			var startX = $('#startX').val();
-			var startY = $('#startY').val();
-			var endX = $('#endX').val();
-			var endY = $('#endY').val();
+		$scope.submitRoute = function() {
+			
 			var monday = $('#monday').prop('checked');
 			var tuesday = $('#tuesday').prop('checked');
 			var wednesday = $('#wednesday').prop('checked');
@@ -15,8 +13,6 @@ angular.module('routeSetupModule', [])
 			var sunday = $('#sunday').prop('checked');
 
 			var routeObj = {};
-			routeObj.start = [Number(startX), Number(startY)];
-			routeObj.end = [Number(endX), Number(endY)];
 			routeObj.days = [monday, tuesday, wednesday, thursday, friday, saturday, sunday];
 			routeObj.fromHour = Number($('#fromHour').val());
 			routeObj.fromMinutes = Number($('#fromMinutes').val());
@@ -26,11 +22,14 @@ angular.module('routeSetupModule', [])
 			routeObj.fee = Number($('#fee').val());
 
 
-
+			var newRoute = PostRoute.newRoute;
 			var data = {};
 			data.route = routeObj;
 			data.userId = $rootScope.user._id;
-			console.log(data);
-			PostPassengerRoute.newRoute(data);
-		};
-	});
+			data.isDriver = $('#isDriver').prop('checked');
+
+			geocodeAddressStart(geocoder, data, newRoute, function(geocoder, data, start, newRoute) {
+				geocodeAddressEnd(geocoder, data, start, newRoute);
+		});
+	};
+});

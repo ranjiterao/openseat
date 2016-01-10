@@ -1,16 +1,11 @@
 <h1>Hello from route setup!</h1>
 
-<form action="">
-	<span>start x<input id = 'startX' type="text"></span>
-	<span>start y<input id = 'startY' type="text"></span>
-	<span>end x<input id = 'endX' type="text"></span>
-	<span>end y<input id = 'endY' type="text"></span>
+	<span>start address<input id = 'startAddress' type="text"></span>
+	<span>end address<input id = 'endAddress' type="text"></span>
 	<span>from hour<input id = 'fromHour' type="text"></span>
 	<span>from min<input id = 'fromMinutes' type="text"></span>
 	<span>to hour<input id = 'toHour' type="text"></span>
 	<span>to min<input id = 'toMinutes' type="text"></span>
-	<span>seats<input id = 'seats' type="text"></span>
-	<span>fee<input id = 'fee' type="text"></span>
 	<span>Monday<input id = 'monday' type = 'checkbox'></span>
 	<span>Tuesday<input id = 'tuesday' type = 'checkbox'></span>
 	<span>Wednesday<input id = 'wednesday' type = 'checkbox'></span>
@@ -18,5 +13,8 @@
 	<span>Friday<input id = 'friday' type = 'checkbox'></span>
 	<span>Saturday<input id = 'saturday' type = 'checkbox'></span>
 	<span>Sunday<input id = 'sunday' type = 'checkbox'></span>
+	<span>Driver<input id = 'isDriver' type="checkbox"></span>
+	<span>seats<input id = 'seats' type="text"></span>
+	<span>fee<input id = 'fee' type="text"></span>
 	<input id = 'submitRoute' ng-click= "submitRoute()" type="button" value= 'submit'>
 </form>
