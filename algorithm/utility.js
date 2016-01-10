@@ -10,7 +10,7 @@ module.exports = function(firstRoute, secondRoute, firstTime, secondTime, firstD
 
   //7 days in a week; firstDays and secondDays are arrays of Booleans representing days
   for (var i = 0; i < 7; i++) {
-    if (firstDays[i] !== secondDays[i]) {
+    if (firstDays[i] && firstDays[i] !== secondDays[i]) {
       return false;
     }
   }
@@ -22,7 +22,6 @@ module.exports = function(firstRoute, secondRoute, firstTime, secondTime, firstD
 
   var firstInMinutes = [toMinutes(firstTime[0]), toMinutes(firstTime[1])];
   var secondInMinutes = [toMinutes(secondTime[0]), toMinutes(secondTime[1])];
-
   var sourceDist = spherical.distance(firstRoute[0], secondRoute[0]);
   var destDist = spherical.distance(firstRoute[1], secondRoute[1]);
   var beginDist = Math.max(firstInMinutes[0] - secondInMinutes[0], secondInMinutes[0] - firstInMinutes[0]);
@@ -34,7 +33,6 @@ module.exports = function(firstRoute, secondRoute, firstTime, secondTime, firstD
   var scalar = 83;
 
   var totalDist = sourceDist + destDist + scalar * (beginDist + endDist);
-
 
   return totalDist;
 
