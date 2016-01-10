@@ -40,9 +40,6 @@ angular.module('openSeatApp', ['ngRoute', 'openSeat.services', 'dashboardModule'
           loggedin: checkLoggedin
         }
       }).
-      when('/about', {
-        templateUrl: './components/about/aboutView.html',
-      }).
       when('/login', {
         templateUrl: './components/login/loginView.html',
       }).
