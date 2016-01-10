@@ -1,9 +1,19 @@
 angular.module('routeSetupModule', [])
 	.controller('routeSetupCtrl', function(PostRoute, $scope, $rootScope) {
 		var geocoder = initMap();
+		$(document).ready(function() {
+
+			$('body').click(function() {
+				if ($('#isDriver').prop('checked')) {
+					$(".driver").show();
+				} else {
+					$(".driver").hide();
+				}
+			});
+		});
 
 		$scope.submitRoute = function() {
-			
+
 			var monday = $('#monday').prop('checked');
 			var tuesday = $('#tuesday').prop('checked');
 			var wednesday = $('#wednesday').prop('checked');
@@ -30,6 +40,6 @@ angular.module('routeSetupModule', [])
 
 			geocodeAddressStart(geocoder, data, newRoute, function(geocoder, data, start, newRoute) {
 				geocodeAddressEnd(geocoder, data, start, newRoute);
-		});
-	};
-});
+			});
+		};
+	});

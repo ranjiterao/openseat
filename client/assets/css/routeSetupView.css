@@ -1,0 +1,30 @@
+
+
+.routeForm form {
+	margin: 50px auto;
+	padding: 0px 0px 20px 0px;
+	background: #EEE;
+	border: 2px solid #CCC;
+	width: 360px;
+
+}
+
+.routeForm form span {
+	margin: 3px 20px;
+	display: block;
+	width :310px;
+}
+
+.routeForm form span {
+	display: inline-block;
+	font-size: 15pt;
+}
+ .routeForm form span input {
+	float: right;
+	padding: 2px;
+	font-size: 15px;
+ }
+
+ .routeForm form input {
+	margin-left: 20px	;
+ }
