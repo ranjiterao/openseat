@@ -8,7 +8,10 @@
 	  <p>{{route.driverRoute.endLabel}}</p>
     <div map-lazy-load="https://maps.google.com/maps/api/js" 
     map-lazy-load-params="{{googleMapsUrl}}">
-      <ng-map center="{{route.driverRoute.start}}" zoom="14"></ng-map>
+      <ng-map center="{{route.driverRoute.start}}" zoom="14">
+        <marker position="{{route.driverRoute.start}}" label="S"></marker>
+          <marker position="{{route.driverRoute.end}}" label="E"></marker>
+    </ng-map>
     </div>
 		<a ng-click="selectDriverRoute(route.driverRoute._id)">Select Route</a>
   </div>
