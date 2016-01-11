@@ -1,21 +1,21 @@
 angular.module('selectDriverModule', ['ngMap'])
-  .controller('selectDriverCtrl', function($scope, $rootScope, $routeParams, Routes, ngMap){
+
+.controller('selectDriverCtrl', function($scope, $rootScope, $routeParams, Routes, NgMap){
     var passengerRouteId = $routeParams.id;
     $scope.driverRoutes = {};
 
-
-    NgMap.getMap().then(function (map) {
-      $scope.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap';
-
-      var initializeDriverRoutes = function(passengerRouteId){
+    var initializeDriverRoutes = function(passengerRouteId){
         Routes.bestDriverRoutesForPassengerRouteId(passengerRouteId, function(driverRoutes){
           $scope.driverRoutes = driverRoutes;
         });
       };
 
-      if (passengerRouteId) {
+    if (passengerRouteId) {
         initializeDriverRoutes(passengerRouteId);
       }
+
+    NgMap.getMap().then(function (map) {
+      $scope.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBytwzUydYLU_mL4X0hN4WvGLDfTQkWNJs';
 
       $scope.selectDriverRoute = function(driverRouteId){
       Routes.userInterestedInDriverRoute(passengerRouteId, driverRouteId);

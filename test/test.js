@@ -1,4 +1,5 @@
 var assert = require('assert');
+var distance = require('../algorithm/utilty.js');
 
 //example of using Mocha, just to make sure the testing suite works
 describe('Array', function() {
@@ -17,7 +18,12 @@ describe('utility', function() {
   });
 
   it('should compute the distance between two sets of coordinates', function() {
-
+    var firstDist =
+    var secondDist = 
+    var firstTime = 
+    var secondTime = 
+    var firstDays = 
+    var secondDays =
   });
 
   it('should throw an error if the input is not in the correct format', function() {
