@@ -6,6 +6,10 @@
 	  <p>Fee: ${{route.driverRoute.fee}}</p>
 	  <p>{{route.driverRoute.startLabel}}</p>
 	  <p>{{route.driverRoute.endLabel}}</p>
+    <div map-lazy-load="https://maps.google.com/maps/api/js" 
+    map-lazy-load-params="{{googleMapsUrl}}">
+      <ng-map center="{{route.driverRoute.start}}" zoom="14"></ng-map>
+    </div>
 		<a ng-click="selectDriverRoute(route.driverRoute._id)">Select Route</a>
   </div>
 </div>
