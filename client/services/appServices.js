@@ -121,7 +121,10 @@ angular.module('openSeat.services', [])
 				}
 			})
 			.then(function() {
-				callback();
+				if(callback){
+					callback();
+
+				}
 			});
 		};
 

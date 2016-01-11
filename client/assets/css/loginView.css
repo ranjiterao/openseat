@@ -1,0 +1,24 @@
+.login {
+	width: 400px;
+	margin: 150px auto;
+	position: relative;
+	background: #EEE;
+	border: 2px solid #CCC;
+	padding: 15px;
+
+}
+
+.login a {
+	display: block;
+	width: 200px;
+	height: 40px;
+	line-height: 40px;
+	margin: auto;
+	font-size: 17pt;
+	background-color: #88F;
+	border: 2px solid #CCC;
+	text-decoration: none;
+	color: #FFF;
+	text-align: center;
+	padding: 5px;
+}
