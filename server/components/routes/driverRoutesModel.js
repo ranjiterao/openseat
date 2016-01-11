@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var DriverRoutesSchema = new mongoose.Schema({
   start: [Number],
   end: [Number],
+  startLabel: String,
+  endLabel: String,
   days: [{
     type: Boolean,
     default: [false, false, false, false, false, false, false]
@@ -20,6 +22,7 @@ var DriverRoutesSchema = new mongoose.Schema({
   prospectivePassengerRoutes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'passengerroutes' }],
   confirmedPassengerRoutes: [{type: mongoose.Schema.Types.ObjectId, ref: 'passengerroutes'}],
   driverInformation: {type: mongoose.Schema.Types.ObjectId, ref: 'users'}
+
 });
 
 module.exports = mongoose.model('driverRoutes', DriverRoutesSchema);
