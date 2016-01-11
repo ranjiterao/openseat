@@ -5,21 +5,21 @@ angular.module('selectDriverModule', ['ngMap'])
     $scope.driverRoutes = {};
 
     var initializeDriverRoutes = function(passengerRouteId){
-        Routes.bestDriverRoutesForPassengerRouteId(passengerRouteId, function(driverRoutes){
-          $scope.driverRoutes = driverRoutes;
-        });
-      };
+      Routes.bestDriverRoutesForPassengerRouteId(passengerRouteId, function(driverRoutes){
+        $scope.driverRoutes = driverRoutes;
+      });
+    };
 
     if (passengerRouteId) {
-        initializeDriverRoutes(passengerRouteId);
-      }
+      initializeDriverRoutes(passengerRouteId);
+    }
+
+    $scope.selectDriverRoute = function(driverRouteId){
+      Routes.userInterestedInDriverRoute(passengerRouteId, driverRouteId);
+      //TODO show something in the view that confirms the driverRoute was added
+    };
 
     NgMap.getMap().then(function (map) {
       $scope.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBytwzUydYLU_mL4X0hN4WvGLDfTQkWNJs';
-
-      $scope.selectDriverRoute = function(driverRouteId){
-      Routes.userInterestedInDriverRoute(passengerRouteId, driverRouteId);
-      //TODO show something in the view that confirms the driverRoute was added
-      };
     });
   });
