@@ -1,4 +1,4 @@
-#driverInfo {
+#driverInfo div {
 	border: 1px solid black;
 	position: relative;
 	padding: 20px;
@@ -8,22 +8,22 @@
 	height: 200px;
 }
 
-#driverInfo p {
+#driverInfo div p {
 	font-size: 17pt;
 	font-weight: bold;
 }
-#driverInfo:hover {
+#driverInfo div:hover {
 	background-color: #FF9;
 }
 
-#driverInfo img {
+#driverInfo div img {
 	border: 1px solid black;
 	display: inline;
 	float: left;
 	height: 200px;
 }
 
-#driverInfo .content {
+#driverInfo div .content {
 	height: 120px;
 
 	margin: 30px 0px 0px 320px;
