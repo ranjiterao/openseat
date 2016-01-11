@@ -8,20 +8,31 @@
 	list-style-type: none;
 }
 
-.confirmed {
-	background-color: #BFB;
-}
+.confirmed, .confirmedPassenger {
+	margin-bottom: 5px;
+ 	background-color: #BFB;
+ 	}
+ 		 
+.confirmed:hover, .confirmedPassenger:hover {
+ 	background-color: #AEA;		 	
 
-.confirmed:hover {
-	background-color: #AEA;
+ }
+.notConfirmed, .prospective {
+	margin-bottom: 5px;
+	background-color: #FFB;
+ }		 
+.notConfirmed:hover, .prospective:hover {
+	background-color: #EEA;
 }
-.notConfirmed {
-	background-color: #FBB;
+.singleRoute {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 2px solid black;
 }
-.notConfirmed:hover {
-	background-color: #EAA;
+.confirmedPassenger, .prospective {
+	height: 120px;
+	padding: 8px;
 }
-
 .routeRender {
 	padding: 10px;
 	width: 90%;
