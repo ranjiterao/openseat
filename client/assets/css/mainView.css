@@ -1,8 +1,16 @@
 * {
 	margin: 0px;
 	padding: 0px;
-
 }
+
+html { 
+  background: url(https://images.unsplash.com/photo-1425957443008-128d759fc6be?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=071a36c6d0d13d31bb846de3376f48c2) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 h1 {
 	padding: 20px;
 }
@@ -44,4 +52,3 @@ h1 {
 .menuBar ul li a:hover {
 	background-color: #4F4F4F;
 }
-
