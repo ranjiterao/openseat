@@ -14,8 +14,7 @@ angular.module('selectDriverModule', [])
     }
 
     $scope.selectDriverRoute = function(driverRouteId){
-      Routes.userInterestedInDriverRoute(passengerRouteId, driverRouteId, function(){
-        //TODO show something in the view that confirms the driverRoute was added
-      });
+      Routes.userInterestedInDriverRoute(passengerRouteId, driverRouteId);
+      //TODO show something in the view that confirms the driverRoute was added
     };
   });
