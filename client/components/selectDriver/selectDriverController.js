@@ -5,10 +5,10 @@ angular.module('selectDriverModule', ['ngMap'])
     $scope.driverRoutes = {};
 
     var initializeDriverRoutes = function(passengerRouteId){
-        Routes.bestDriverRoutesForPassengerRouteId(passengerRouteId, function(driverRoutes){
-          $scope.driverRoutes = driverRoutes;
-        });
-      };
+      Routes.bestDriverRoutesForPassengerRouteId(passengerRouteId, function(driverRoutes){
+        $scope.driverRoutes = driverRoutes;
+      });
+    };
 
     if (passengerRouteId) {
       initializeDriverRoutes(passengerRouteId);
