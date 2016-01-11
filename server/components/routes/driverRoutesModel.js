@@ -17,9 +17,9 @@ var DriverRoutesSchema = new mongoose.Schema({
   seats: Number,
   fee: Number,
 
-  prospectivePassengerRoutes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'passengerroutes' }],
-  confirmedPassengerRoutes: [{type: mongoose.Schema.Types.ObjectId, ref: 'passengerroutes'}],
-  driverInformation: {type: mongoose.Schema.Types.ObjectId, ref: 'users'}
+  prospectivePassengerRoutes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'passengerRoutes' }],
+  confirmedPassengerRoutes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'passengerRoutes' }],
+  driverInformation: { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
 });
 
 module.exports = mongoose.model('driverRoutes', DriverRoutesSchema);
