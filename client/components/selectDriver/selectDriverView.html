@@ -1,4 +1,4 @@
-<div id = 'driverInfo'  ng-repeat = 'route in driverRoutes track by $index'>
+<div id = 'driverInfo' ng-click="selectDriverRoute(route.driverRoute._id)" ng-repeat = 'route in driverRoutes track by $index'>
   <img src="{{route.driver.picture}}">
   <div class= 'content'>
 	  <p>{{route.driver.name}}</p>
