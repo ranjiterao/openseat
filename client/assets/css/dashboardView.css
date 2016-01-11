@@ -8,18 +8,25 @@
 	list-style-type: none;
 }
 
-.confirmed {
+.confirmed, .confirmedPassenger {
+	margin-bottom: 5px;
 	background-color: #BFB;
 }
 
-.confirmed:hover {
+.confirmed:hover, .confirmedPassenger:hover {
 	background-color: #AEA;
 }
-.notConfirmed {
-	background-color: #FBB;
+.notConfirmed, .prospective {
+	margin-bottom: 5px;
+	background-color: #FFB;
 }
-.notConfirmed:hover {
-	background-color: #EAA;
+.notConfirmed:hover, .prospective:hover {
+	background-color: #EEA;
+}
+.singleRoute {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 2px solid black;
 }
 
 .routeRender {
@@ -47,3 +54,7 @@
 	width: auto;
 }
 
+.confirmedPassenger, .prospective {
+	height: 120px;
+	padding: 8px;
+}

@@ -113,43 +113,43 @@ angular.module('openSeat.services', [])
 
 		var userInterestedInDriverRoute = function(passengerRouteId, driverRouteId, callback) {
 			return $http({
-				method: 'POST',
-				url: '/api/userInterestedInDriverRoute/',
-				data: {
-					passengerRouteId: passengerRouteId,
-					driverRouteId: driverRouteId
-				}
-			})
-			.then(function() {
-				if(callback){
-					callback();
+					method: 'POST',
+					url: '/api/userInterestedInDriverRoute/',
+					data: {
+						passengerRouteId: passengerRouteId,
+						driverRouteId: driverRouteId
+					}
+				})
+				.then(function() {
+					if (callback) {
+						callback();
 
-				}
-			});
+					}
+				});
 		};
 
-		var driverConfirmsPassenger = function(driverRouteId, passengerRouteId, callback){
+		var driverConfirmsPassenger = function(driverRouteId, passengerRouteId, callback) {
 			return $http({
-				method: 'POST',
-				url: '/api/driverConfirmsPassenger/',
-				data: {
-					passengerRouteId: passengerRouteId,
-					driverRouteId: driverRouteId
-				}
-			})
-			.then(function() {
-				callback();
-			});
+					method: 'POST',
+					url: '/api/driverConfirmsPassenger/',
+					data: {
+						passengerRouteId: passengerRouteId,
+						driverRouteId: driverRouteId
+					}
+				})
+				.then(function() {
+					callback();
+				});
 		};
 
-		var getPassengerRoutesForUserId = function(passengerId, callback){
+		var getPassengerRoutesForUserId = function(passengerId, callback) {
 			$http.get('/api/passengerRoute/' + passengerId)
 				.then(function(passengerRoutes) {
 					callback(passengerRoutes.data);
 				});
 		};
 
-		var getDriverRoutesForUserId = function(driverId, callback){
+		var getDriverRoutesForUserId = function(driverId, callback) {
 			$http.get('/api/driverRoute/' + driverId)
 				.then(function(driverRoutes) {
 					callback(driverRoutes.data);
@@ -161,6 +161,6 @@ angular.module('openSeat.services', [])
 			userInterestedInDriverRoute: userInterestedInDriverRoute,
 			getPassengerRoutesForUserId: getPassengerRoutesForUserId,
 			getDriverRoutesForUserId: getDriverRoutesForUserId,
-			driverConfirmsPassenger: driverConfirmsPassenger
+			driverConfirmsPassenger: driverConfirmsPassenger,
 		};
 	});
