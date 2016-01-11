@@ -51,21 +51,16 @@ module.exports = {
 
     findDriverRoutes({ _id: driverRouteId })
       .then(function(driverRoute){
-
         findPassengerRoutes({ _id: passengerRouteId })
           .then(function(passengerRoute){
             driverRoute.confirmedPassengerRoutes.push(passengerRoute);
             passengerRoute.confirmedDriverRoute = driverRoute;
+
+            driverRoute.prospectivePassengerRoutes.splice(driverRoute.prospectivePassengerRoutes.indexOf(passengerRouteId), 1);
+            passengerRoute.driverRoutesIAmInterestedIn.splice(passengerRoute.driverRoutesIAmInterestedIn.indexOf(driverRouteId), 1);
+
             passengerRoute.save();
             driverRoute.save();
-
-            updatePassengerRoutes({ _id: passengerRouteId },
-              { $pull: { driverRoutesIAmInterestedIn: { _id: driverRouteId } } }
-            );
-
-            updateDriverRoutes({ _id: driverRouteId },
-              { $pull: { prospectivePassengerRoutes: { _id: passengerRouteId } } }
-            );
 
             res.sendStatus(200);
           });
@@ -135,8 +130,6 @@ module.exports = {
           startLabel: passengerRoute.startLabel,
           endLabel: passengerRoute.endLabel,
           days: passengerRoute.days,
-          endLabel : passengerRoute.endLabel,
-          startLabel : passengerRoute.startLabel,
           fromHour: passengerRoute.fromHour,
           fromMinutes: passengerRoute.fromMinutes,
           toHour: passengerRoute.toHour,
@@ -179,8 +172,6 @@ module.exports = {
           startLabel: driverRoute.startLabel,
           endLabel: driverRoute.endLabel,
           days: driverRoute.days,
-          endLabel : driverRoute.endLabel,
-          startLabel : driverRoute.startLabel,
           fromHour: driverRoute.fromHour,
           fromMinutes: driverRoute.fromMinutes,
           toHour: driverRoute.toHour,
@@ -212,11 +203,14 @@ module.exports = {
         path: 'prospectivePassengerRoutes',
         model: 'passengerRoutes'
       })
+      .populate({
+        path: 'confirmedPassengerRoutes',
+        model: 'passengerRoutes'
+      })
       .exec(function(error, routes){
         if (error){
           return res.sendStatus(400);
         }
-        
         res.status(200).json(routes);
       });
   },
@@ -239,7 +233,6 @@ module.exports = {
         if (error){
           return res.sendStatus(400);
         }
-
         res.status(200).json(user.PassengerRoutes);
       });
   },
@@ -253,7 +246,7 @@ module.exports = {
       .populate({
             path: 'DriverRoutes',
             populate: {
-              path: 'prospectivePassengerRoutes',
+              path: 'prospectivePassengerRoutes confirmedPassengerRoutes',
               model: 'passengerRoutes',
               populate: {
                 path: 'passengerInformation',
@@ -266,7 +259,14 @@ module.exports = {
           return res.sendStatus(400);
         }
 
-        res.status(200).json(user.DriverRoutes);
+        var options = {
+              path: 'DriverRoutes.confirmedPassengerRoutes.passengerInformation',
+              model: 'users'
+            };
+
+        User.populate(user, options, function(err, results){
+          res.status(200).json(results.DriverRoutes);
+        });
       });
   }
 };

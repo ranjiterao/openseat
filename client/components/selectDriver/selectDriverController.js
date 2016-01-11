@@ -5,7 +5,6 @@ angular.module('selectDriverModule', [])
 
     var initializeDriverRoutes = function(passengerRouteId){
       Routes.bestDriverRoutesForPassengerRouteId(passengerRouteId, function(driverRoutes){
-        console.log(driverRoutes, 'these are the driver routes');
         $scope.driverRoutes = driverRoutes;
       });
     };
@@ -15,7 +14,8 @@ angular.module('selectDriverModule', [])
     }
 
     $scope.selectDriverRoute = function(driverRouteId){
-      Routes.userInterestedInDriverRoute(passengerRouteId, driverRouteId);
-      //TODO show something in the view that confirms the driverRoute was added
+      Routes.userInterestedInDriverRoute(passengerRouteId, driverRouteId, function(){
+        //TODO show something in the view that confirms the driverRoute was added
+      });
     };
   });
